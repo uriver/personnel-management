@@ -3,7 +3,9 @@
 		<div class="week-lr"></div>
 		<div class="week-center">
 			<div style="margin-top:50px"></div>
-			<div><h1>创建周报</h1></div>
+			<div>
+				<h1>创建周报</h1>
+			</div>
 			<el-form ref="form" :model="form" label-width="80px">
 			  <el-form-item label="周报主题">
 			  	<el-col :span="18">
@@ -77,23 +79,24 @@
 <style>
 	.user-weekly{
 		width: 100%;
-		height: 100%;
 		overflow: hidden;
 		display: flex;
 	}
 	.week-lr{
-		flex: 1.5;
+		flex: 1.2;
 	}
 	.week-center{
 		flex: 4;
 	}
 	.week-center h1{
+		font-size: 34px;
 		font-weight: 300;
+		margin-bottom: 15px;
 	}
 	.weekly-line{
 		width: 700px;
 		height: 60px;
-		margin-bottom: 24px;
+		margin-bottom: 18px;
 		border-bottom: 1px solid #BABABA;
 	}
 </style>

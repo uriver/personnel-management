@@ -3,7 +3,9 @@
 		<div class="week-lr"></div>
 		<div class="week-center">
 			<div style="margin-top:80px"></div>
-			<div class="weekly-line"><h1>周报审核</h1></div>
+			<div class="weekly-line">
+				<h1>周报审核</h1>
+			</div>
 			  <el-table
 			    :data="tableData"
 			    border

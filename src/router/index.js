@@ -10,6 +10,11 @@ import WeeklyCheck from '@/components/user/weekly-check'
 import WeeklyHistory from '@/components/user/weekly-history'
 import Task from '@/components/user/task'
 import UserMessage from '@/components/user/user-message'
+import CgMes from '@/components/user/user-cgmes'
+
+import Adminpage from '@/components/admin/adminpage'
+import ATask from '@/components/admin/atask'
+import Notice from '@/components/admin/notice'
 
 Vue.use(Router)
 
@@ -17,8 +22,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'Login',
+      component: Login
     },
     {
     	path: '/login',
@@ -53,8 +58,27 @@ export default new Router({
     		{
     			path: 'user-message',
     			component: UserMessage
-    		}
+    		},
+            {
+                path: 'user-cgmes',
+                component: CgMes
+            }
     	]
+    },
+    {
+        path: '/adminpage',
+        name: 'Adminpage',
+        component: Adminpage,
+        children:[
+            {
+                path:"",
+                component: ATask
+            },
+            {
+                path:"notice",
+                component: Notice
+            }
+        ]
     }
   ]
 })

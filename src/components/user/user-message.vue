@@ -43,7 +43,7 @@
 				<label><p>紧急联系人：</p>李四</label>
 				<br />				
 				<label><p>紧急联系电话：</p>1786270XXXX</label>
-				<button class="umess-btn">修改信息</button>
+				<button class="umess-btn" @click="changeMessage">修改信息</button>
 			</div>
 		</div>
 		<div class="umess-lr"></div>
@@ -56,6 +56,11 @@
       return {
         radio: '1'
       };
+    },
+    methods:{
+    	changeMessage: function(){
+    		this.$router.push({ path: '/userpage/user-cgmes' })
+    	}
     }
   }
 </script>

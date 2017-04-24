@@ -12,7 +12,7 @@
 					<div class="psd-set"> 
 						密码：<input class="login-input" type="text" name="psd"/>
 					</div>
-					<button class="btn-submit" onclick="">登 录</button>
+					<button class="btn-submit" @click="userLogin()">登 录</button>
 				</form>
 			</div>
 			<div class="login-admin" v-show="!show">
@@ -23,7 +23,7 @@
 					<div class="psd-set"> 
 						管理员密码：<input class="login-input" type="text" name="ad-psd"/>
 					</div>
-					<button class="btn-submit" onclick="">登 录</button>
+					<button class="btn-submit" @click="adminLogin()">登 录</button>
 				</form>
 			</div>
 			<div class="login-choose el-icon-setting" @click="changeShow()"> 切换至{{identity}}登录</div>
@@ -48,6 +48,12 @@
 				else {
 					this.identity = "普通账户";
 				}
+			},
+			userLogin:function(){
+				this.$router.push({ path: '/userpage' });
+			},
+			adminLogin:function(){
+				this.$router.push({ path: '/adminpage' });
 			}
 		}
 	}

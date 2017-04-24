@@ -19,6 +19,7 @@
 				
 			</router-view>
 		</div>
+		<div class="foot-margin"></div>
 		<footer class="footer">
 			<p class="copy">&copy 网络信息安全实验室</p>
 			<p class="copy2">地址: 哈尔滨工业大学（威海）</p>
@@ -44,7 +45,6 @@
 <style>
 	#user-container{
 		width: 100%;
-		height: 100%;
 		min-height: 900px;
 	}
 	.logo{
@@ -55,12 +55,14 @@
 	}
 	.main-content{
 		width: 100%;
-		height: calc(100% - 60px);
+		min-height: 770px;
+	}
+	.foot-margin{
+		height: 45px;
 	}
 	.footer{
 		width: 100%;
 		height: 70px;
-		margin-top: -70px;
 		text-align: center;
 		overflow: hidden;
 		background-color: #324157;
