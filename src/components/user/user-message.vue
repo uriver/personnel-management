@@ -7,42 +7,44 @@
 				<h1>个人信息</h1>
 			</div>
 			<div class="umess-left">
-				<label><p>姓名：</p>张三</label>
+				<label><p>姓名：</p>{{ userMes.name }}</label>
 				<br />				
-				<label><p>性别：</p>男</label>
+				<label><p>性别：</p>{{ userMes.sex }}</label>
+				<br>
+				<label><p>工号：</p>{{ userMes.jobID }}</label>
+				<br>					
+				<label><p>学号：</p>{{ userMes.sid }}</label>	
 				<br>				
-				<label><p>学号：</p>1404XXX</label>	
+				<label><p>年级：</p>{{ userMes.grade }}</label>	
 				<br>				
-				<label><p>年级：</p>大三</label>	
+				<label><p>专业：</p>{{ userMes.major }}</label>
 				<br>				
-				<label><p>专业：</p>计算机科学与技术</label>
+				<label><p>邮箱：</p>{{ userMes.email }}</label>	
 				<br>				
-				<label><p>邮箱：</p>123456@qq.com</label>	
+				<label><p>QQ：</p>{{ userMes.qq }}</label>	
 				<br>				
-				<label><p>QQ：</p>123456</label>	
+				<label><p>手机号：</p>{{ userMes.tel }}</label>		
 				<br>				
-				<label><p>手机号：</p>1786270XXXX</label>		
+				<label><p>辅导员：</p>{{ userMes.instructor }}</label>
 				<br>				
-				<label><p>辅导员：</p>赵权睿</label>
+				<label><p>研究室：</p>{{ userMes.resOffice }}</label>	
 				<br>				
-				<label><p>研究室：</p>329研究室</label>	
+				<label><p>是否退出：</p>{{ userMes.exit }}</label>	
 				<br>				
-				<label><p>是否退出：</p>否</label>	
+				<label><p>出生日期：</p>{{ userMes.date }}</label>	
 				<br>				
-				<label><p>出生日期：</p>1995年1月1日</label>	
-				<br>				
-				<label><p>身份证号：</p>4302XX19950101XXXX</label>		
+				<label><p>身份证号：</p>{{ userMes.id }}</label>		
 			</div>
 			<div class="umess-right">
-				<label><p>实验室小组：</p>云计算小组</label>	
+				<label><p>实验室小组：</p>{{ userMes.group }}</label>	
 				<br>				
-				<label><p>所在办公室：</p>330办公室</label>	
+				<label><p>所在办公室：</p>{{ userMes.office }}</label>	
 				<br>								
-				<label><p>加入中心时间：</p>一年</label>
+				<label><p>加入中心时间：</p>{{ userMes.joinTime }}</label>
 				<br>
-				<label><p>紧急联系人：</p>李四</label>
+				<label><p>紧急联系人：</p>{{ userMes.emergencyContact }}</label>
 				<br />				
-				<label><p>紧急联系电话：</p>1786270XXXX</label>
+				<label><p>紧急联系电话：</p>{{ userMes.emergencyTelephone }}</label>
 				<button class="umess-btn" @click="changeMessage">修改信息</button>
 			</div>
 		</div>
@@ -54,10 +56,21 @@
   export default {
     data () {
       return {
+      	userMes:{},
         radio: '1'
       };
     },
+    mounted:function(){
+    	this.getData();
+    },
     methods:{
+    	getData:function(){
+    		var self = this;
+	        this.$http.get("/static/user-message.json").then(function(res){
+	          console.log(res.data);
+	          self.userMes = res.data;
+	        })
+    	},
     	changeMessage: function(){
     		this.$router.push({ path: '/userpage/user-cgmes' })
     	}

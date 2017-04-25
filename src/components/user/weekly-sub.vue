@@ -70,7 +70,22 @@
     },
     methods: {
       onSubmit() {
-        console.log('submit!');
+        this.$prompt('请输入提交对象工号', '提交', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          inputPattern: /^\d+$/,
+          inputErrorMessage: '工号格式不正确'
+        }).then(({ value }) => {
+          this.$message({
+            type: 'success',
+            message: '提交成功'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消输入'
+          });       
+        });
       }
     }
   }

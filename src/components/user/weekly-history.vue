@@ -3,7 +3,7 @@
 		<div class="week-lr"></div>
 		<div class="week-center">
 			<div style="margin-top:80px"></div>
-			<div class="weekly-line"><h1>周报审核</h1></div>
+			<div class="weekly-line"><h1>已通过审核周报</h1></div>
 			  <el-table
 			    :data="tableData"
 			    border
@@ -48,42 +48,20 @@
   export default {
     data() {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '张三',
-          theme: '2017年4月第一周周报汇报'
-        }, {
-          date: '2016-05-04',
-          name: '李四',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        },{
-          date: '2016-05-03',
-          name: '赵六',
-          theme: '2017年5月第一周周报汇报'
-        }]
+        tableData: []
       }
     },
+    mounted:function(){
+      this.getData();
+    },
     methods: {
+      getData:function(){
+        var self = this;
+        this.$http.get("/static/weekly-history.json").then(function(res){
+          console.log(res.data);
+          self.tableData = res.data;
+        })
+      },
       handleEdit(index, row) {
         console.log(index, row);
       },

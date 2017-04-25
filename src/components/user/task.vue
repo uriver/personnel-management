@@ -35,7 +35,7 @@
 
 			    <el-table-column label="当前结果">
 			      <template scope="scope">
-			        <el-tag type="primary" size="small">通过</el-tag>
+			        <el-tag :type="scope.row.status === '未通过' ? 'primary' : 'success'" size="small">{{scope.row.status}}</el-tag>
 			      </template>
 			    </el-table-column>
 			  </el-table>
@@ -48,42 +48,20 @@
   export default {
     data() {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '张三',
-          theme: '2017年4月第一周周报汇报'
-        }, {
-          date: '2016-05-04',
-          name: '李四',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        },{
-          date: '2016-05-03',
-          name: '赵六',
-          theme: '2017年5月第一周周报汇报'
-        }]
+        tableData: []
       }
     },
+    mounted:function(){
+      this.getTask();
+    },
     methods: {
+      getTask:function(){
+        var self = this;
+        this.$http.get("/static/task.json").then(function(res){
+          console.log(res.data);
+          self.tableData = res.data;
+        })
+      },
       handleEdit(index, row) {
         console.log(index, row);
       },

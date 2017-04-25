@@ -52,26 +52,19 @@
   export default {
     data() {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '张三',
-          theme: '2017年4月第一周周报汇报'
-        }, {
-          date: '2016-05-04',
-          name: '李四',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-01',
-          name: '王五',
-          theme: '2017年5月第一周周报汇报'
-        }, {
-          date: '2016-05-03',
-          name: '赵六',
-          theme: '2017年5月第一周周报汇报'
-        }]
+        tableData: []
       }
     },
+    mounted:function(){
+      this.getData();
+    },
     methods: {
+    getData:function(){
+        var self = this;
+        this.$http.get("/static/weekly-check.json").then(function(res){
+          self.tableData = res.data;
+        })
+      },
       handleEdit(index, row) {
         console.log(index, row);
       },

@@ -60,7 +60,7 @@
 
   			    <el-table-column label="功能">
   			      <template scope="scope">
-  			        <el-button type="primary" size="small">查看</el-button>
+  			        <el-button type="primary" size="small" @click="openNotice(scope.$index)">查看</el-button>
                 <el-button type="danger" size="small">更改</el-button>
   			      </template>
   			    </el-table-column>
@@ -88,34 +88,26 @@
             { required: true, message: '请填写通知内容', trigger: 'blur' }
           ]
         },
-        tableData: [{
-          date: '2016-05-02',
-          theme: '实验室纳新通知'
-        }, {
-          date: '2016-05-04',
-          theme: '2017年5月出席情况汇报'
-        }, {
-          date: '2016-05-01',
-          theme: '2017年4月出席情况汇报'
-        }, {
-          date: '2016-05-01',
-          theme: '2017年3月出席情况汇报'
-        }, {
-          date: '2016-05-01',
-          theme: '2017年2月出席情况汇报'
-        }, {
-          date: '2016-05-01',
-          theme: '2017年1月出席情况汇报'
-        }, {
-          date: '2016-05-01',
-          theme: '2016年12月出席情况汇报'
-        },{
-          date: '2016-05-03',
-          theme: '2016年11月出席情况汇报'
-        }]
+        tableData: []
       }
     },
+    mounted:function(){
+      this.getData();
+    },
     methods: {
+      getData:function(){
+        var self = this;
+        this.$http.get("/static/notice.json").then(function(res){
+          self.tableData = res.data;
+        })
+      },
+      openNotice(scope) {
+        this.$msgbox({
+          title: this.tableData[scope].theme,
+          message: this.tableData[scope].content,
+          confirmButtonText: '确定',
+        })
+      },
       handleEdit(index, row) {
         console.log(index, row);
       },

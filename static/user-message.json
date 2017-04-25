@@ -1,0 +1,23 @@
+{
+    "name": "李四（个人信息AJAX）",
+    "sex":"男",
+    "jobID":"80",
+    "sid":"1404104XX",
+    "grade":"大三",
+    "major":"计算机科学与技术",
+    "email":"123456@qq.com",
+    "qq":"123456789",
+    "tel":"17862701234",
+    "instructor":"赵权睿",
+    "resOffice":"329研究室",
+    "exit":"否",
+    "date":"1995年1月1日",
+    "id":"4302XX1995XXXX1234",
+    "group":"云计算小组",
+    "office":"303办公室",
+    "joinTime":"一年",
+    "emergencyContact":"张三",
+    "emergencyTelephone":"1786270XXXX",
+    "eventID":"80week201605021",
+    "ifChange":"no"
+}

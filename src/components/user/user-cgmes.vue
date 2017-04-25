@@ -24,6 +24,12 @@
 				    </el-radio-group>
 				  </el-form-item>
 
+				  <el-form-item label="工号" prop="jobID">
+				  	<el-col :span="8">
+				    	<el-input v-model="ruleForm.jobID"></el-input>
+					</el-col>
+				  </el-form-item>
+
 				  <el-form-item label="学号" prop="sid">
 				  	<el-col :span="8">
 				    	<el-input v-model="ruleForm.id"></el-input>
@@ -155,6 +161,7 @@
         ruleForm: {
           name: '',
           sex: '',
+          jobID:'',
           sid:'',
           grade: '',
           major:'',
@@ -179,6 +186,10 @@
           ],
           sex: [
             { required: true, message: '请选择性别', trigger: 'change' }
+          ],
+          jobID: [
+            { required: true, message: '请输入工号', trigger: 'blur' },
+            { min: 1, max: 3, message: '长度为1-3个数字', trigger: 'blur' }
           ],
           sid: [
             { required: true, message: '请输入学号', trigger: 'blur' },
